@@ -1,33 +1,21 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono, Inter } from 'next/font/google';
+import { IM_Fell_English, IM_Fell_English_SC } from 'next/font/google';
 import './globals.css';
-import { cn } from '@/lib/utils';
 import {
   NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu';
 import Image from 'next/image';
 import Link from 'next/link';
+import NavItem from './components/NavItem';
 
-const geistMonoHeading = Geist_Mono({
-  subsets: ['latin'],
-  variable: '--font-heading',
+const fellEnglish = IM_Fell_English({
+  variable: '--font-fell-english',
+  weight: '400',
 });
-
-const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
-
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
+const fellEnglishSC = IM_Fell_English_SC({
+  variable: '--font-fell-english-sc',
+  weight: '400',
 });
 
 export const metadata: Metadata = {
@@ -41,20 +29,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={cn(
-        'h-full',
-        'antialiased',
-        geistSans.variable,
-        geistMono.variable,
-        'font-sans',
-        inter.variable,
-        geistMonoHeading.variable,
-      )}
-    >
-      <body className="min-h-full flex flex-col bg-primary-color">
-        <header className="flex justify-between items-center">
+    <html lang="en" className={`${fellEnglish.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col bg-warriors-green">
+        <header
+          className={`flex justify-around items-center py-2 mb-10 bg-twilight-green ${fellEnglishSC.variable}`}
+        >
           <Link href="/">
             <Image
               src="/shield.png"
@@ -64,15 +43,15 @@ export default function RootLayout({
               loading="eager"
             />
           </Link>
-          <h1 className="text-secondary-color text-4xl">
+          <h1 className="text-warriors-yellow text-4xl">
             Legend of Zelda Dashboard
           </h1>
-          <nav>
-            <ul>
-              <li>Item 1</li>
-              <li>Item 2</li>
-            </ul>
-          </nav>
+          <NavigationMenu className="flex items-center rounded-xs">
+            <NavigationMenuList className="flex gap-3">
+              <NavItem href="/heroes" label="Heroes" />
+              <NavItem href="/villains" label="Villains" />
+            </NavigationMenuList>
+          </NavigationMenu>
         </header>
         {children}
       </body>
