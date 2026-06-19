@@ -48,6 +48,7 @@ export default function RootLayout({
           </h1>
           <NavigationMenu className="flex items-center rounded-xs">
             <NavigationMenuList className="flex gap-3">
+              <NavItem href="/" label="Home" />
               <NavItem href="/heroes" label="Heroes" />
               <NavItem href="/villains" label="Villains" />
             </NavigationMenuList>

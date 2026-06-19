@@ -80,6 +80,9 @@
   --color-wind-yellow: #f4e31c;
   --color-warriors-green: #63aa5d;
   --color-warriors-yellow: #f6df6b;
+  --color-skyward-green: linear-gradient(#93cb85 40%, #7bb656 75%);
+  --color-skyward-gold: linear-gradient(#fff59c 40%, #e6be43 75%);
+  --color-sheikahslate-blue: #20e3ff;
 }
 
 @theme inline {

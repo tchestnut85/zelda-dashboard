@@ -2,7 +2,7 @@ import {
   NavigationMenuItem,
   NavigationMenuLink,
 } from '@/components/ui/navigation-menu';
-import Link from 'next/link';
+import ButtonLink from './ButtonLink';
 
 export default function NavItem({
   href,
@@ -13,11 +13,8 @@ export default function NavItem({
 }) {
   return (
     <NavigationMenuItem>
-      <NavigationMenuLink
-        className="text-2xl hover:bg-warriors-yellow rounded-md"
-        asChild
-      >
-        <Link href={href}>{label}</Link>
+      <NavigationMenuLink asChild>
+        <ButtonLink href={href} text={label} />
       </NavigationMenuLink>
     </NavigationMenuItem>
   );
