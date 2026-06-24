@@ -14,7 +14,7 @@ export default function ButtonLink({
     <Link
       href={href}
       className={cn(
-        'hover:cursor-pointer text-black text-xl bg-warriors-yellow hover:bg-twilight-yellow! rounded-sm',
+        'flex justify-center hover:cursor-pointer text-black text-xl bg-warriors-yellow hover:bg-twilight-yellow! rounded-sm',
         className,
       )}
     >

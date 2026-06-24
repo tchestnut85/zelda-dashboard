@@ -1,59 +1,42 @@
-const ZELDA_GRAPHQL_API = 'https://zelda.fanapis.com/api/graphql' as const;
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import ButtonLink from './components/ButtonLink';
+import { PAGES } from '@/app/constants';
 
-export default async function Home() {
-  async function getGames() {
-    const query = `
-        query Games {
-          games {
-            id
-            name
-            description
-            released_date
-            developer
-            publisher
-          }
-        }
-      `;
-
-    try {
-      // TODO - try to use react-query but will probably need to make it a client component and there might be CORS issue with the API
-      const res = await fetch(ZELDA_GRAPHQL_API, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ query }),
-      });
-
-      console.log('res:', res);
-      const { data, errors } = await res.json();
-      // console.log('data:', data);
-
-      if (res.status !== 200 || errors || !data) {
-        throw new Error(`There was an error: ${errors[0].message}`);
-      }
-
-      return data.games;
-    } catch (error) {
-      if (error instanceof Error) {
-        console.error(error);
-      }
-    }
-  }
-
-  const games = await getGames();
-  console.log('games:', games);
-
+export default function Home() {
   return (
-    <main>
-      <h1>Legend of Zelda Dashboard homepage</h1>
-      {games.length && (
-        <ul>
-          {games.map(game => (
-            <li key={game.id}>{game.name}</li>
-          ))}
-        </ul>
-      )}
+    <main className="flex flex-col items-center gap-10">
+      <h2 className="text-center text-xl md:text-3xl">
+        Explore the realm of Hyrule!
+      </h2>
+      <ul className="flex flex-col flex-wrap sm:flex-row justify-center items-center gap-5">
+        {PAGES.map(({ id, href, title, description }) => (
+          <li key={id}>
+            <Card className="w-48 h-55 flex flex-col justify-between text-center bg-twilight-green">
+              <CardHeader>
+                <CardTitle className="text-lg md:text-xl font-bold">
+                  {title}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="text-base md:text-lg">
+                {description}
+              </CardContent>
+              <CardFooter className="self-center">
+                <ButtonLink
+                  href={href}
+                  text={`Go to ${title}`}
+                  className="text-base p-2"
+                />
+              </CardFooter>
+            </Card>
+          </li>
+        ))}
+      </ul>
     </main>
   );
 }
