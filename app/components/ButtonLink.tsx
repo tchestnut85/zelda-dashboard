@@ -1,7 +1,5 @@
-'use client';
-
+import { cn } from '@/lib/utils';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 
 export default function ButtonLink({
   href,
@@ -12,13 +10,13 @@ export default function ButtonLink({
   text: string;
   className?: string;
 }) {
-  const route = usePathname();
-  const isCurrentRoute = route === href;
-
   return (
     <Link
       href={href}
-      className={`hover:cursor-pointer text-black text-xl hover:bg-twilight-yellow focus:bg-twilight-yellow rounded-sm ${isCurrentRoute ? 'bg-sheikahslate-blue' : 'bg-warriors-yellow'} ${className ?? ''}`}
+      className={cn(
+        'hover:cursor-pointer text-black text-xl bg-warriors-yellow hover:bg-twilight-yellow! rounded-sm',
+        className,
+      )}
     >
       <p>{text}</p>
     </Link>
