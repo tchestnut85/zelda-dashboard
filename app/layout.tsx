@@ -1,9 +1,10 @@
+import { Analytics } from '@vercel/analytics/next';
 import type { Metadata } from 'next';
 import { IM_Fell_English, IM_Fell_English_SC } from 'next/font/google';
-import './globals.css';
 import Image from 'next/image';
 import Link from 'next/link';
 import NavMenu from './components/NavMenu';
+import './globals.css';
 
 const fellEnglish = IM_Fell_English({
   variable: '--font-fell-english',
@@ -45,6 +46,7 @@ export default function RootLayout({
           <NavMenu />
         </header>
         {children}
+        <Analytics />
       </body>
     </html>
   );
