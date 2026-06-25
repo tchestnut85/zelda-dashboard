@@ -6,7 +6,7 @@ import {
   NavigationMenuList,
 } from '@/components/ui/navigation-menu';
 import NavItem from './NavItem';
-import { PAGES } from '@/app/constants';
+import { PAGES } from '../constants';
 
 export default function NavMenu() {
   const path = usePathname();
