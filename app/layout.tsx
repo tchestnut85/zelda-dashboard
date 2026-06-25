@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import NavMenu from './components/NavMenu';
 import './globals.css';
+import ButtonLink from './components/ButtonLink';
 
 const fellEnglish = IM_Fell_English({
   variable: '--font-fell-english',
@@ -44,6 +45,12 @@ export default function RootLayout({
             Legend of Zelda Dashboard
           </h1>
           <NavMenu />
+          {/* <ButtonLink
+            isExternal
+            href="https://github.com/tchestnut85/zelda-dashboard"
+            text="GitHub"
+            className="text-base p-1"
+          /> */}
         </header>
         {children}
         <Analytics />
